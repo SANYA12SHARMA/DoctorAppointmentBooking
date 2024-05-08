@@ -3,10 +3,12 @@ const morgan = require('morgan');
 const dotenv = require('dotenv');
 const colors = require('colors');
 
+dotenv.config();
+
 const app = express();
 
 app.use(express.json());
-dotenv.config();
+app.use(morgan('dev'));
 
 app.get('/',(req,res)=>{
     res.status(200).send({
@@ -17,5 +19,5 @@ app.get('/',(req,res)=>{
 const port = process.env.PORT || 8080;
 
 app.listen(port,() => {
-    console.log(`Server is running in ${process.env.dev_mode} on port ${process.env.PORT}`);
+    console.log(`Server is running in ${process.env.dev_mode} on port ${process.env.PORT}`.brightCyan);
 });
