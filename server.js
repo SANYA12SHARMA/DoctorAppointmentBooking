@@ -7,6 +7,7 @@ dotenv.config();
 
 const app = express();
 
+//middlewares
 app.use(express.json());
 app.use(morgan('dev'));
 
@@ -19,5 +20,5 @@ app.get('/',(req,res)=>{
 const port = process.env.PORT || 8080;
 
 app.listen(port,() => {
-    console.log(`Server is running in ${process.env.dev_mode} on port ${process.env.PORT}`.brightCyan);
+    console.log(`Server is running in ${process.env.dev_mode} on port ${process.env.PORT}`.bgCyan.white);
 });
