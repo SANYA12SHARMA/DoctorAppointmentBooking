@@ -7,14 +7,16 @@ dotenv.config();
 
 const app = express();
 
-
+//mongodb connection
+connectDB();
 
 //middlewares
 app.use(express.json());
 app.use(morgan('dev'));
 
-//mongodb connection
-connectDB();
+//routes
+app.use('/api/v1/user',require('./routes/userRoutes'));
+
 app.get('/',(req,res)=>{
     res.status(200).send({
         message:"server running",
